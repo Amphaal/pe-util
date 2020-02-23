@@ -4,23 +4,10 @@ project(mingw_util CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (USE_FILESYSTEM)
-  # available with gcc 8.0
-  set(CMAKE_CXX_STANDARD 17)
-  set(PE_COMPILE_DEF USE_FILESYSTEM)
-  set(PE_LINK_DEF stdc++fs)
-elseif(USE_FILESYSTEM_EXPERIMENTAL)
-  # available with gcc 5.3
-  set(PE_COMPILE_DEF USE_FILESYSTEM_EXPERIMENTAL)
-  set(PE_LINK_DEF stdc++fs)
-else()
-  find_package(Boost 1.54 COMPONENTS
-    system # needed by filesystem
-    filesystem
-    REQUIRED)
-  set(PE_COMPILE_DEF USE_BOOST)
-  set(PE_LINK_DEF ${Boost_LIBRARIES})
-endif()
+# available with gcc 8.0
+set(CMAKE_CXX_STANDARD 17)
+set(PE_COMPILE_DEF USE_FILESYSTEM)
+set(PE_LINK_DEF stdc++fs)
 
 add_subdirectory(pe-parse/pe-parser-library)
 add_executable(peldd
