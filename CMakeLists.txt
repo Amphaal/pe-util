@@ -18,5 +18,3 @@ add_executable(peldd
 target_link_libraries(peldd pe-parser-library ${PE_LINK_DEF})
 target_compile_definitions(peldd PRIVATE ${PE_COMPILE_DEF})
 target_compile_options(peldd PRIVATE -Wall -Werror)
-
-install(TARGETS peldd RUNTIME DESTINATION bin)
