@@ -18,16 +18,8 @@
 #include <string.h>
 #include <regex>
 
-#if USE_BOOST
-  #include <boost/filesystem.hpp>
-  namespace fs = boost::filesystem;
-#elif USE_FILESYSTEM
-  #include <filesystem>
-  namespace fs = std::filesystem;
-#elif USE_FILESYSTEM_EXPERIMENTAL
-  #include <experimental/filesystem>
-  namespace fs = std::experimental::filesystem;
-#endif
+#include <filesystem>
+namespace fs = std::filesystem;
 
 using namespace std;
 using namespace peparse;
