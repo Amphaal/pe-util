@@ -362,6 +362,8 @@ struct Arguments {
     "wldap32.dll",
     "ws2_32.dll",
     "wtsapi32.dll",
+    "rpcrt4.dll",
+    "opengl32.dll"
   };
   bool no_default_whitelist {false};
   bool ignore_errors {false};
