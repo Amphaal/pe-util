@@ -3,6 +3,7 @@
 
 #include <cstring>
 #include <filesystem>
+#include <sstream>
 
 void Arguments::parse(int argc, char **argv) {
   for (int i = 1; i < argc; ++i) {
@@ -47,12 +48,28 @@ void Arguments::parse(int argc, char **argv) {
       files.push_back(a);
     }
   }
+
   if (!no_default_whitelist)
     whitelist.insert(default_whitelist.begin(), default_whitelist.end());
+
+  #ifdef PEUTIL_WHITELIST_EXTENSIONS 
+    auto wl_exts = _split(PEUTIL_WHITELIST_EXTENSIONS_, ';');
+    whitelist.insert(wl_exts.begin(), wl_exts.end());
+  #endif
 }
 
 string Arguments::_get_cwd() {
   return std::filesystem::current_path().string();
+}
+
+vector<string> Arguments::_split(const string &s, char delim) {
+    vector<string> result;
+    stringstream ss(s);
+    string item;
+    while (getline (ss, item, delim)) {
+        result.push_back (item);
+    }
+    return result;
 }
 
 vector<string> Arguments::_get_path_dirs() {

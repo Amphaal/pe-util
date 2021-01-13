@@ -5,6 +5,12 @@
 
 namespace fs = std::filesystem;
 
+#ifdef PEUTIL_FORCE_FS_WINDOWS_SEPARATOR
+  static constexpr char _sep = '/';
+#else
+  static constexpr char _sep = (char)std::filesystem::path::preferred_separator;
+#endif
+
 string PathCache::resolve(const unordered_map<string, string> &h, const string &filename) {
   auto fn = _to_lower(filename);
   auto i = h.find(fn);

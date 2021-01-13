@@ -94,4 +94,5 @@ struct Arguments {
  private:
   static string _get_cwd();
   static vector<string> _get_path_dirs();
+  static vector<string> _split(const string &s, char delim);
 };
