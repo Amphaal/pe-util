@@ -25,9 +25,9 @@ string PathCache::resolve(const deque<string> &search_path, const string &filena
             xs[_to_lower(fn)] = std::move(fn);
           }
           auto r = m_.insert(make_pair(path, std::move(xs)));
-          return path + (char)fs::path::preferred_separator + resolve(r.first->second, filename);
+          return path + _sep + resolve(r.first->second, filename);
         } else {
-          return path + (char)fs::path::preferred_separator + resolve(i->second, filename);
+          return path + _sep + resolve(i->second, filename);
         }
       }
       catch (const range_error &e) {

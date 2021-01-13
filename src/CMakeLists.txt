@@ -1,6 +1,6 @@
 configure_file(
-    config.h.cmake 
-    config.h
+    peutil-config.h.cmake 
+    peutil-config.h
 )
 
 add_executable(peldd

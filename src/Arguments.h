@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config.h"
+#include "peutil-config.h"
 
 #include <deque>
 #include <vector>
@@ -19,10 +19,10 @@ struct Arguments {
   deque<string> search_path;
   bool no_default_search_path {false};
   const vector<string> mingw64_search_path = {
-    DEFAULT_SEARCH_PATH
+    PEUTIL_DEFAULT_SEARCH_PATH
   };
   const vector<string> mingw64_32_search_path = {
-    DEFAULT_SEARCH_PATH_32
+    PEUTIL_DEFAULT_SEARCH_PATH_32
   };
   unordered_set<string> whitelist;
   const vector<string> default_whitelist = {

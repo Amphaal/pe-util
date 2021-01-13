@@ -19,7 +19,7 @@
                 "kind": "test"
             },
             "type": "shell",
-            "command": "cmake -GNinja -Bbuild -H. -DCMAKE_BUILD_TYPE=Debug -DDEFAULT_SEARCH_PATH=${env:MINGW64_ROOT}/bin"
+            "command": "cmake -GNinja -Bbuild -H. -DCMAKE_BUILD_TYPE=Debug -DPEUTIL_DEFAULT_SEARCH_PATH=${env:MINGW64_ROOT}/bin"
         },
         {
             "label": "2. Build",
