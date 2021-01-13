@@ -14,6 +14,7 @@ using namespace std;
 struct Arguments {
   bool resolve {false};
   bool transitive {false};
+  bool transitive_prevent_duplicates {true};
   bool include_main {false};
   deque<string> files;
   deque<string> search_path;

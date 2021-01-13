@@ -50,12 +50,18 @@ void Traverser::process_stack() {
       if (args.resolve) {
         try {
           auto resolved = path_cache.resolve(search_path, n);
-          result_set.insert(resolved);
-          if (args.transitive && !known_files.count(n)) {
-            auto p = make_pair(n, resolved);
-            known_files.insert(p);
-            files.push(std::move(p));
+          bool add_to_rs = true;
+          if (args.transitive) {
+            if(!known_files.count(n)) {
+              auto p = make_pair(n, resolved);
+              known_files.insert(p);
+              files.push(std::move(p));
+            } else if(args.transitive_prevent_duplicates) {
+              add_to_rs = false;
+            }
           }
+          if(add_to_rs)
+            result_set.insert(resolved);
         } catch (const range_error &e) {
           if (args.ignore_errors) {
             cerr << e.what() << endl;
