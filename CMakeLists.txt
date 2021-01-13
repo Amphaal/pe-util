@@ -14,7 +14,7 @@ message("Default search path for 64bits binaires : [${PEUTIL_DEFAULT_SEARCH_PATH
 
 option(PEUTIL_FORCE_FS_WINDOWS_SEPARATOR "Forces usage of Windows-style separator (slash)" ON)
 
-SET(PEUTIL_WHITELIST_EXTENSIONS "")
+# SET(PEUTIL_WHITELIST_EXTENSIONS "")
 message("More whitelisted libraries : [${PEUTIL_WHITELIST_EXTENSIONS}]")
 
 set(CMAKE_CXX_STANDARD 17)
