@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     args.parse(argc, argv);
     Traverser t(args);
   } catch (const exception &e) {
-    cerr << "Error: " << e.what() << '\n';
+    cerr << "Error: " << e.what() << endl;
     exit(1);
   }
 }

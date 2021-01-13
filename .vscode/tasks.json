@@ -19,12 +19,21 @@
                 "kind": "test"
             },
             "type": "shell",
-            "command": "cmake -GNinja -Bbuild -H. -DCMAKE_BUILD_TYPE=Debug"
+            "command": "cmake -GNinja -Bbuild -H. -DCMAKE_BUILD_TYPE=Debug -DDEFAULT_SEARCH_PATH=${env:MINGW64_ROOT}/bin"
         },
         {
             "label": "2. Build",
             "type": "shell",
             "command": "ninja",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "3. Find Qt5Core Dependencies",
+            "type": "shell",
+            "command": "./peldd.exe -a ${env:MINGW64_ROOT}/bin/Qt5Core.dll",
             "options": {
                 "cwd": "${workspaceRoot}/build"
             },

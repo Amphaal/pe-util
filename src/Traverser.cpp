@@ -58,7 +58,7 @@ void Traverser::process_stack() {
           }
         } catch (const range_error &e) {
           if (args.ignore_errors) {
-            cerr << e.what() << '\n';
+            cerr << e.what() << endl;
             continue;
           }
           throw;
@@ -90,5 +90,5 @@ bool Traverser::_wlist_match(const unordered_set<string> &wlist, const string &s
 
 void Traverser::print_result() {
   for (auto &r : result_set)
-    cout << r << '\n';
+    cout << r << endl;
 }
