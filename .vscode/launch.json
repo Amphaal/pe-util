@@ -11,11 +11,6 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}/build/peldd.exe",
-            "args": [
-                "-t", 
-                "${env:MINGW64_ROOT}/bin/Qt5Core.dll", 
-                "${env:MINGW64_ROOT}/bin/Qt5Gui.dll"
-            ],
             "miDebuggerPath": "${env:MINGW64_ROOT}/bin/gdb.exe"
         }
     ]

@@ -29,15 +29,6 @@
                 "cwd": "${workspaceRoot}/build"
             },
             "problemMatcher": []
-        },
-        {
-            "label": "3. Find Qt5 Dependencies",
-            "type": "shell",
-            "command": "./peldd.exe -t ${env:MINGW64_ROOT}/bin/Qt5Core.dll ${env:MINGW64_ROOT}/bin/Qt5Gui.dll",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "problemMatcher": []
         }
     ]
 }
