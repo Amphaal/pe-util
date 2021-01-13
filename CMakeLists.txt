@@ -1,20 +1,27 @@
 cmake_minimum_required(VERSION 3.0)
-project(mingw_util CXX)
+project(PEUtil CXX)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(NOT PEUTIL_DEFAULT_SEARCH_PATH_32)
+    SET(PEUTIL_DEFAULT_SEARCH_PATH_32 "/usr/i686-w64-mingw32/sys-root/mingw/bin")
+endif()
 
-# available with gcc 8.0
+if(NOT PEUTIL_DEFAULT_SEARCH_PATH)
+    SET(PEUTIL_DEFAULT_SEARCH_PATH    "/usr/x86_64-w64-mingw32/sys-root/mingw/bin")
+endif()
+
+message("Default search path for 32bits binaires : [${PEUTIL_DEFAULT_SEARCH_PATH_32}]")
+message("Default search path for 64bits binaires : [${PEUTIL_DEFAULT_SEARCH_PATH}]")
+
+option(PEUTIL_FORCE_FS_WINDOWS_SEPARATOR "Forces usage of Windows-style separator (slash)" ON)
+
+SET(PEUTIL_WHITELIST_EXTENSIONS "")
+message("More whitelisted libraries : [${PEUTIL_WHITELIST_EXTENSIONS}]")
+
 set(CMAKE_CXX_STANDARD 17)
-set(PE_COMPILE_DEF USE_FILESYSTEM)
-set(PE_LINK_DEF stdc++fs)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTESION)
+
+SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_subdirectory(pe-parse/pe-parser-library)
-add_executable(peldd
-  peldd.cc
-  pe-parse/pe-parser-library/src/parse.cpp
-  pe-parse/pe-parser-library/src/buffer.cpp
-  )
-target_link_libraries(peldd pe-parser-library ${PE_LINK_DEF})
-target_compile_definitions(peldd PRIVATE ${PE_COMPILE_DEF})
-target_compile_options(peldd PRIVATE -Wall -Werror)
+add_subdirectory(src)
