@@ -1,15 +1,20 @@
 {
-    "terminal.integrated.shell.windows": "C:/msys64/usr/bin/bash.exe",
-    "terminal.integrated.shellArgs.windows": [
-        "--login",
-        "-i"
-    ],
-    "terminal.integrated.env.windows": {
-        "MSYSTEM": "MINGW64",
-        "MSYS2_PATH_TYPE": "inherit",
-        "CHERE_INVOKING": "1",
-        "MSVSCODE": "1"
+    "terminal.integrated.profiles.windows": {
+        "Msys2 Shell" : {
+            "path" : "${env:MINGW64_ROOT}\\..\\usr\\bin\\bash.exe",
+            "args": [        
+                "--login",
+                "-i"
+            ],
+            "env": {
+                "MSYSTEM": "MINGW64",
+                "MSYS2_PATH_TYPE": "inherit",
+                "CHERE_INVOKING": "1",
+                "MSVSCODE": "1"
+            }
+        }
     },
+    "terminal.integrated.defaultProfile.windows": "Msys2 Shell",
     "files.associations": {
         "deque": "cpp",
         "unordered_map": "cpp",

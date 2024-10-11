@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(PEUtil CXX)
 
 if(NOT PEUTIL_DEFAULT_SEARCH_PATH_32)
